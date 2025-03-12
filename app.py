@@ -21,6 +21,8 @@ def index():
                 start = start0.strftime("%Y-%M-%dT%H:00:00")
                 end = start0.strftime("%Y-%M-%dT%H:60:60")
                 headers = {
+                    'start_date': start,          
+                    'end_date': end,
                     'Content-Type': 'application/json',
                     'Api-Key': key,
                 }
