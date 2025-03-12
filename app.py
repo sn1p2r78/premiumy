@@ -19,7 +19,7 @@ def index():
                 time.sleep(40)
             
                 start = start0.strftime("%Y-%m-%dT%H:00:00.999Z")
-                end = start0.strftime("%Y-%m-%dT%H:60:60.999Z")
+                end = start0.strftime("%Y-%m-%dT24:60:60.999Z")
                 headers = {
                     'Content-Type': 'application/json',
                     'Api-Key': key,
