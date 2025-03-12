@@ -31,8 +31,6 @@ def index():
                     'method': 'sms.mdr_full:get_list',
                     'params': {
                         'filter': {
-                            'start_date': start,          
-                            'end_date': end,
                             'senderid': 'Microsoft',
                             'phone': number,
                         },
