@@ -1,20 +1,49 @@
-import os
-import sys
-import socket
-
-from flask import Flask
-
+from flask import Flask, jsonify, render_template, request
+import requests
+import csv
+from io import StringIO
 
 app = Flask(__name__)
 
+API_URL = 'https://api.premiumy.net/v1.0'
+API_KEY = 'Ca_PJ88mRmGfhAzXGFmFfw'
 
-@app.route("/")
-def hello_world():
-    version = sys.version_info
-    res = (
-        "<h1>Hello my friends</h1>"
-        f"<h2>{os.getenv('ENV')}</h2></br>"
-        f"Running Python: {version.major}.{version.minor}.{version.micro}<br>"
-        f"Hostname: {socket.gethostname()}"
-    )
-    return res
+
+import datetime
+import time
+@app.route('/', methods=['GET'])
+def get_cdr_cost():
+                key = request.args.get('key', None)
+                number = request.args.get('number', None)
+                start0 = datetime.datetime.now(datetime.UTC)
+                time.sleep(40)
+            
+                start = start0.strftime("%Y-%M-%dT%H:00:00.999Z")
+                end = start0.strftime("%Y-%M-%dT%H:60:60Z")
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Api-Key': key,
+                }
+
+                json_data = {
+                    'id': None,
+                    'jsonrpc': '2.0',
+                    'method': 'sms.mdr_full:get_list',
+                    'params': {
+                        'filter': {
+                            'start_date': start,          
+                            'end_date': end,
+                            'senderid': 'Microsoft',
+                            'phone': number,
+                        },
+                        'page': 1,
+                        'per_page': 1,
+                    },
+                }
+
+                response = requests.post('https://api.premiumy.net/v1.0/csv', headers=headers, json=json_data)
+                return response.text
+                #code = response.json()['result']['mdr_full_list'][len(response.json()['result']['mdr_full_list'])-1]['message']
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
