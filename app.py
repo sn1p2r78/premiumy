@@ -18,8 +18,8 @@ def index():
                 start0 = datetime.datetime.now(datetime.timezone.utc)
                 time.sleep(40)
             
-                start = start0.strftime("%Y-%m-%dT%H:00:00.999Z")
-                end = start0.strftime("%Y-%m-%dT24:60:60.999Z")
+                start = start0.strftime("%Y-%m-%dT%H:00:00")
+                end = start0.strftime("%Y-%m-%dT24:60:60")
                 headers = {
                     'Content-Type': 'application/json',
                     'Api-Key': key,
