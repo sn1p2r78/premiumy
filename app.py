@@ -12,7 +12,7 @@ API_KEY = 'Ca_PJ88mRmGfhAzXGFmFfw'
 import datetime
 import time
 @app.route('/', methods=['GET'])
-def get_cdr_cost():
+def index():
                 key = request.args.get('key', None)
                 number = request.args.get('number', None)
                 start0 = datetime.datetime.now(datetime.UTC)
