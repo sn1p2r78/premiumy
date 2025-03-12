@@ -44,6 +44,3 @@ def get_cdr_cost():
                 response = requests.post('https://api.premiumy.net/v1.0/csv', headers=headers, json=json_data)
                 return response.text
                 #code = response.json()['result']['mdr_full_list'][len(response.json()['result']['mdr_full_list'])-1]['message']
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000)
