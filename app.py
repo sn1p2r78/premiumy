@@ -46,4 +46,4 @@ def get_cdr_cost():
                 #code = response.json()['result']['mdr_full_list'][len(response.json()['result']['mdr_full_list'])-1]['message']
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=80)
